@@ -1,62 +1,78 @@
-import React, { useEffect } from "react";
+import React from "react";
 import useAircraftComparison from "./hooks/useAircraftComparison.js";
+import Grid from "@mui/joy/Grid";
+import { Sheet, styled } from "@mui/joy";
 import BeechJet from "./assets/beechjet_400a.jpg";
-import Table from "react-bootstrap/Table";
+import './ComparisonPage.css'; // Ensure to import your CSS
+
+const Item = styled(Sheet)(({ theme }) => ({
+    backgroundColor: '#fff',
+    ...theme.typography['body-sm'],
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    borderRadius: 4,
+    color: theme.vars.palette.text.secondary,
+    ...theme.applyStyles('dark', {
+        backgroundColor: theme.palette.background.level1,
+    }),
+}));
 
 function ComparisonPage() {
-  const { data } = useAircraftComparison();
+    const { data } = useAircraftComparison();
 
-  return (
-    <Table responsive>
-      <thead>
-        <tr>
-          <th>Model</th>
-          <th>Fleet Type</th>
-          <th>Baggage Volume</th>
-          <th>Cabin Height</th>
-          <th>Cabin Width</th>
-          <th>Company</th>
-          <th>Cruise Type</th>
-          <th>Fleet Id</th>
-          <th>Interior Seating Length</th>
-          <th>Max</th>
-          <th>Med</th>
-          <th>Min</th>
-          <th>Overall Cabin Length</th>
-          <th>PXMax</th>
-          <th>PXMed</th>
-          <th>PXMin</th>
-          <th>Speed</th>
-        </tr>
-      </thead>
+    const metadata = {
+        size: "15.6 m",
+        baggageVolume: "56 cu ft",
+        cabinHeight: "4.8 ft",
+        cabinWidth: "4.9 ft",
+        interiorSeatingLength: "13.6 ft",
+    };
 
-      <tbody style={{ color: "white" }}>
-        {data.map((plane) => (
-          <tr>
-            <td key={0}>
-              <img src={BeechJet} style={{ width: "100px", height: "100px" }} />
-            </td>
-            <td key={1}>{plane.FleetType}</td>
-            <td key={2}>{plane.BaggageVolume}</td>
-            <td key={3}>{plane.CabinHeight}</td>
-            <td key={4}>{plane.CabinWidth}</td>
-            <td key={5}>{plane.Company}</td>
-            <td key={6}>{plane.CruiseType}</td>
-            <td key={7}>{plane.FleetId}</td>
-            <td key={9}>{plane.InteriorSeatingLength}</td>
-            <td key={10}>{plane.Max}</td>
-            <td key={11}>{plane.Med}</td>
-            <td key={12}>{plane.Min}</td>
-            <td key={13}>{plane.OverallCabinLength}</td>
-            <td key={14}>{plane.PXMax}</td>
-            <td key={15}>{plane.PXMed}</td>
-            <td key={16}>{plane.PXMin}</td>
-            <td key={17}>{plane.Speed}</td>
-          </tr>
-        ))}
-      </tbody>
-    </Table>
-  );
+    return (
+        <div>
+            <Grid container spacing={2}>
+                <Grid item xs={12} sm={6} md={6}>
+                    <Item>
+                        <img src={BeechJet} style={{ maxWidth: '100%' }} alt="BeechJet" />
+                    </Item>
+                </Grid>
+                <Grid item xs={12} sm={6} md={6}>
+                    <Item>
+                        <h3>Flight Metadata</h3>
+                        <p><strong>Size:</strong> {metadata.size}</p>
+                        <p><strong>Baggage Volume:</strong> {metadata.baggageVolume}</p>
+                        <p><strong>Cabin Height:</strong> {metadata.cabinHeight}</p>
+                        <p><strong>Cabin Width:</strong> {metadata.cabinWidth}</p>
+                        <p><strong>Interior Seating Length:</strong> {metadata.interiorSeatingLength}</p>
+                    </Item>
+                </Grid>
+            </Grid>
+            <Grid container spacing={2}>
+                <Grid item xs={12} sm={6} md={6}>
+                    <Item>
+                        <img
+                            src={BeechJet}
+                            style={{
+                                maxWidth: '80%',
+                                display: 'block'
+                            }}
+                            alt="BeechJet"
+                        />
+                    </Item>
+                </Grid>
+                <Grid item xs={12} sm={6} md={6}>
+                    <Item>
+                        <h3>Flight Metadata</h3>
+                        <p><strong>Size:</strong> {metadata.size}</p>
+                        <p><strong>Baggage Volume:</strong> {metadata.baggageVolume}</p>
+                        <p><strong>Cabin Height:</strong> {metadata.cabinHeight}</p>
+                        <p><strong>Cabin Width:</strong> {metadata.cabinWidth}</p>
+                        <p><strong>Interior Seating Length:</strong> {metadata.interiorSeatingLength}</p>
+                    </Item>
+                </Grid>
+            </Grid>
+        </div>
+    );
 }
 
 export default ComparisonPage;

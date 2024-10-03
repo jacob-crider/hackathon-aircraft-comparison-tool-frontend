@@ -1,0 +1,20 @@
+/* ComparisonPage.css */
+@media print {
+    .MuiGrid-item {
+        display: flex; /* Ensure items are flex containers */
+        flex-direction: row; /* Align items in a row */
+        justify-content: space-between; /* Space items evenly */
+        page-break-inside: avoid; /* Avoid breaking rows between pages */
+    }
+
+    .MuiGrid-item img {
+        width: 100%; /* Force images to take full width */
+        max-width: 100%; /* Ensure images are responsive */
+    }
+}
+
+.left-aligned-img {
+    max-width: 80%;
+    display: block;
+    margin-left: 0;
+}
