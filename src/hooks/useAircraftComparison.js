@@ -11,16 +11,7 @@ const useAircraftComparison = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          // "https://zjusyqpxuc.execute-api.us-east-2.amazonaws.com/dev/getAircraft",
-          "http://localhost:3000/planes",
-          {
-            headers: {
-              // Accept: "application/json",
-              "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Credentials": true,
-              "Conent-Type": "application/json",
-            },
-          }
+          "https://zvim5i62kh.execute-api.us-east-2.amazonaws.com/dev/getAircraft"
         );
         setData(response.data);
         setError(null);
