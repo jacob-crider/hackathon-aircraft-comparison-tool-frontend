@@ -2,59 +2,51 @@ import React, { useEffect } from "react";
 import AspectRatio from "@mui/joy/AspectRatio";
 import Typography from "@mui/joy/Typography";
 import Table from "@mui/joy/Table";
+import useAircraftComparison from "./hooks/useAircraftComparison.js";
 
 function ComparisonPage() {
+  const { data } = useAircraftComparison();
 
-    
+  console.log(data);
 
   return (
     // <AspectRatio sx={{ width: 1000, bgcolor: "white" }}>
     <Table aria-label="basic table">
       <thead>
         <tr>
-          <th style={{ width: "40%" }}>Dessert (100g serving)</th>
-          <th>Calories</th>
-          <th>Fat&nbsp;(g)</th>
-          <th>Carbs&nbsp;(g)</th>
-          <th>Protein&nbsp;(g)</th>
+          <th>Fleet Type</th>
+          <th>Baggage Volume</th>
+          <th>Cabin Height</th>
+          <th>Cabin Width</th>
+          <th>Company</th>
+          <th>Cruise Type</th>
+          <th>Fleet Id</th>
+          <th>Interior Seating Length</th>
+          <th>Max</th>
+          <th>Med</th>
+          <th>Min</th>
+          <th>Overall Cabin Length</th>
+          <th>Speed</th>
         </tr>
       </thead>
       <tbody style={{ color: "white" }}>
-        <tr>
-          <td>Frozen yoghurt</td>
-          <td>159</td>
-          <td>6</td>
-          <td>24</td>
-          <td>4</td>
-        </tr>
-        <tr>
-          <td>Ice cream sandwich</td>
-          <td>237</td>
-          <td>9</td>
-          <td>37</td>
-          <td>4.3</td>
-        </tr>
-        <tr>
-          <td>Eclair</td>
-          <td>262</td>
-          <td>16</td>
-          <td>24</td>
-          <td>6</td>
-        </tr>
-        <tr>
-          <td>Cupcake</td>
-          <td>305</td>
-          <td>3.7</td>
-          <td>67</td>
-          <td>4.3</td>
-        </tr>
-        <tr>
-          <td>Gingerbread</td>
-          <td>356</td>
-          <td>16</td>
-          <td>49</td>
-          <td>3.9</td>
-        </tr>
+        {data.map((plane) => (
+          <tr>
+            <td key={1}>{plane.FleetType}</td>
+            <td key={2}>{plane.BaggageVolume}</td>
+            <td key={3}>{plane.CabinHeight}</td>
+            <td key={4}>{plane.CabingWidth}</td>
+            <td key={5}>{plane.Company}</td>
+            <td key={6}>{plane.CruiseType}</td>
+            <td key={7}>{plane.FleetId}</td>
+            <td key={9}>{plane.InteriorSeatingLength}</td>
+            <td key={10}>{plane.Max}</td>
+            <td key={11}>{plane.Med}</td>
+            <td key={12}>{plane.Min}</td>
+            <td key={13}>{plane.OverallCabinLength}</td>
+            <td key={14}>{plane.Speed}</td>
+          </tr>
+        ))}
       </tbody>
     </Table>
     // </AspectRatio>
