@@ -1,13 +1,13 @@
 import { useState } from "react";
 import "./App.css";
-import ComparisonPage from "./comparisonPage";
+import SearchAircraft from "./SearchAircraft";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <ComparisonPage />
+      <SearchAircraft />
     </>
   );
 }

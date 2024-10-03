@@ -13,6 +13,7 @@ const useAircraftComparison = () => {
         const response = await axios.get(
           "https://zvim5i62kh.execute-api.us-east-2.amazonaws.com/dev/getAircraft"
         );
+        console.log(response.data)
         setData(response.data);
         setError(null);
       } catch (err) {
