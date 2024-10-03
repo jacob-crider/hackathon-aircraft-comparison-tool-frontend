@@ -13,31 +13,31 @@ function ComparisonPage() {
   return (
     // <AspectRatio sx={{ width: 1000, bgcolor: "white" }}>
     <Table aria-label="basic table">
-      <thead>
-        <tr>
-          <th>Model</th>
-          <th>Fleet Type</th>
-          <th>Baggage Volume</th>
-          <th>Cabin Height</th>
-          <th>Cabin Width</th>
-          <th>Company</th>
-          <th>Cruise Type</th>
-          <th>Fleet Id</th>
-          <th>Interior Seating Length</th>
-          <th>Max</th>
-          <th>Med</th>
-          <th>Min</th>
-          <th>Overall Cabin Length</th>
-          <th>PXMax</th>
-          <th>PXMed</th>
-          <th>PXMin</th>
-          <th>Speed</th>
-        </tr>
-      </thead>
+      <tr>
+        <th>Model</th>
+        <th>Fleet Type</th>
+        <th>Baggage Volume</th>
+        <th>Cabin Height</th>
+        <th>Cabin Width</th>
+        <th>Company</th>
+        <th>Cruise Type</th>
+        <th>Fleet Id</th>
+        <th>Interior Seating Length</th>
+        <th>Max</th>
+        <th>Med</th>
+        <th>Min</th>
+        <th>Overall Cabin Length</th>
+        <th>PXMax</th>
+        <th>PXMed</th>
+        <th>PXMin</th>
+        <th>Speed</th>
+      </tr>
       <tbody style={{ color: "white" }}>
         {data.map((plane) => (
           <tr>
-            <td key={0}>{BeechJet}</td>
+            <td key={0}>
+              <img src={BeechJet} style={{ width: "100px", height: "100px" }} />
+            </td>
             <td key={1}>{plane.FleetType}</td>
             <td key={2}>{plane.BaggageVolume}</td>
             <td key={3}>{plane.CabinHeight}</td>
