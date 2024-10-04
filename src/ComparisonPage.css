@@ -15,6 +15,16 @@
         width: 100%; /* Force images to take full width */
         max-width: 100%; /* Ensure images are responsive */
     }
+
+    .print-block {
+        display: block; /* Ensure each block is displayed as a block element */
+        page-break-after: always; /* Force a page break after each block */
+    }
+
+    .exterior, .interior {
+        margin: 0; /* Reset margin if necessary */
+        padding: 10px; /* Add padding if needed */
+    }
 }
 
 .left-aligned-img {
