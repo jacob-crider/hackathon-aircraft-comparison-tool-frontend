@@ -1,14 +1,20 @@
 /* SearchAircraft.css */
 
 .header {
-    font-size: 1.5rem; /* Modern font size */
-    font-weight: bold; /* Bold for emphasis */
-    color: #333; /* Subtle modern text color */
-    margin-top: 10px; /* Add top margin */
-    white-space: nowrap; /* Prevents text from wrapping to a new line */
-    overflow: hidden; /* Prevents the text from spilling out */
-    text-overflow: ellipsis; /* Adds ellipsis if text overflows */
+  font-size: 1.5rem; /* Modern font size */
+  font-weight: bold; /* Bold for emphasis */
+  color: #333; /* Subtle modern text color */
+  margin-top: 10px; /* Add top margin */
+  white-space: nowrap; /* Prevents text from wrapping to a new line */
+  overflow: hidden; /* Prevents the text from spilling out */
+  text-overflow: ellipsis; /* Adds ellipsis if text overflows */
 }
 .tr {
-    border-bottom: 1pt solid black;
+  border-bottom: 1pt solid black;
+}
+
+@media print {
+  .pagebreak {
+    page-break-before: always;
+  } /* page-break-after works, as well */
 }
