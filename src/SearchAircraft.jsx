@@ -6,6 +6,7 @@ import {Box, FormControl, MenuItem, Select} from "@mui/material";
 import {InputLabel} from "@mui/material";
 import Grid from "@mui/joy/Grid";
 import ExteriorAircraftPage from "./ExteriorAircraftPage.jsx";
+import "./SearchAircraft.css";
 
 
 function SearchPage() {
@@ -116,19 +117,8 @@ function SearchPage() {
                 {/* Render ComparisonPage if at least one aircraft is selected */}
                 {(filteredData1 || filteredData2 || filteredData3) && (
                     <>
-                        <Row >
-                            <header
-                                style={{
-                                    fontSize: "1.5rem", // Modern font size
-                                    fontWeight: "bold", // Bold for emphasis
-                                    color: "#333", // Subtle modern text color
-                                    margin: 0, // Removes default margin
-                                    whiteSpace: "nowrap", // Prevents text from wrapping to a new line
-                                    overflow: "hidden", // Prevents the text from spilling out
-                                    textOverflow: "ellipsis", // Adds ellipsis if text overflows
-                                }}>
-                                Exterior
-                            </header>
+                        <Row>
+                            <header className="header">Exterior</header>
                         </Row>
                         {filteredData1 && (
                             <>
@@ -145,19 +135,8 @@ function SearchPage() {
                                 <ExteriorAircraftPage plane={filteredData3} />
                             </>
                         )}
-                        <Row >
-                            <header
-                            style={{
-                                fontSize: "1.5rem", // Modern font size
-                                fontWeight: "bold", // Bold for emphasis
-                                color: "#333", // Subtle modern text color
-                                margin: 0, // Removes default margin
-                                whiteSpace: "nowrap", // Prevents text from wrapping to a new line
-                                overflow: "hidden", // Prevents the text from spilling out
-                                textOverflow: "ellipsis", // Adds ellipsis if text overflows
-                            }}>
-                                Interior
-                            </header>
+                        <Row>
+                            <header className="header">Interior</header>
                         </Row>
                         {filteredData1 && (
                             <>
