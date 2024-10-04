@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import ComparisonPage from "./comparisonPage";
+import InteriorAircraftPage from "./InteriorAircraftPage.jsx";
 import logo from "./images/NetJetslogo_2022_smaller.png";
 import SearchPage from "./SearchAircraft.jsx";
 

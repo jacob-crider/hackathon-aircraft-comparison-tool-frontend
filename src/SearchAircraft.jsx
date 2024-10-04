@@ -1,10 +1,11 @@
 import {Form} from "react-bootstrap";
-import ComparisonPage from "./comparisonPage.jsx";
+import InteriorAircraftPage from "./InteriorAircraftPage.jsx";
 import useAircraftComparison from "./hooks/useAircraftComparison.js";
 import {useState} from "react";
 import {Box, FormControl, MenuItem, Select} from "@mui/material";
 import {InputLabel} from "@mui/material";
 import Grid from "@mui/joy/Grid";
+import ExteriorAircraftPage from "./ExteriorAircraftPage.jsx";
 
 
 function SearchPage() {
@@ -83,8 +84,10 @@ function SearchPage() {
                 {/* Render ComparisonPage if both aircraft are selected */}
                 {filteredData1 && filteredData2 && (
                     <>
-                        <ComparisonPage plane={filteredData1} />
-                        <ComparisonPage plane={filteredData2} />
+                        <ExteriorAircraftPage plane={filteredData1} />
+                        <ExteriorAircraftPage plane={filteredData2} />
+                        <InteriorAircraftPage plane={filteredData1} />
+                        <InteriorAircraftPage plane={filteredData2} />
                     </>
                 )}
             </Box>
