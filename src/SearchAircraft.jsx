@@ -126,15 +126,39 @@ function SearchPage() {
         </Row>
       </Box>
       {/* Render ComparisonPage if both aircraft are selected */}
-      {filteredData1 && filteredData2 && filteredData3 && (
-        <Row>
-          <ExteriorAircraftPage plane={filteredData1} />
-          <ExteriorAircraftPage plane={filteredData2} />
-          <ExteriorAircraftPage plane={filteredData3} />
-          <InteriorAircraftPage plane={filteredData1} />
-          <InteriorAircraftPage plane={filteredData2} />
-          <InteriorAircraftPage plane={filteredData3} />
-        </Row>
+      {(filteredData1 || filteredData2 || filteredData3) && (
+        <>
+          {filteredData1 && (
+            <>
+              <ExteriorAircraftPage plane={filteredData1} />{" "}
+            </>
+          )}
+          {filteredData2 && (
+            <>
+              <ExteriorAircraftPage plane={filteredData2} />{" "}
+            </>
+          )}
+          {filteredData3 && (
+            <>
+              <ExteriorAircraftPage plane={filteredData3} />{" "}
+            </>
+          )}
+          {filteredData1 && (
+            <>
+              <InteriorAircraftPage plane={filteredData1} />{" "}
+            </>
+          )}
+          {filteredData2 && (
+            <>
+              <InteriorAircraftPage plane={filteredData2} />{" "}
+            </>
+          )}
+          {filteredData3 && (
+            <>
+              <InteriorAircraftPage plane={filteredData3} />{" "}
+            </>
+          )}
+        </>
       )}
     </>
   );
