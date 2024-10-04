@@ -1,5 +1,9 @@
 /* ComparisonPage.css */
 @media print {
+    /* Hide the specific grid container from print */
+    div.MuiFormControl-root {
+        display: none; /* Hide this class in print */
+    }
     .MuiGrid-item {
         display: flex; /* Ensure items are flex containers */
         flex-direction: row; /* Align items in a row */
