@@ -43,7 +43,7 @@ function SearchPage() {
     <>
       <Box sx={{ p: 2 }} style={{ display: "flex", width: "100%" }}>
         <Row>
-          <Grid container spacing={2} style={{ width: "100%" }}>
+          <Grid container spacing={2}>
             {/* First Dropdown */}
 
             <Grid item xs={12} class="col-md-3" style={{ marginRight: "5px" }}>
