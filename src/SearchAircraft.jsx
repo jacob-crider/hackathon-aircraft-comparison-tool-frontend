@@ -84,10 +84,14 @@ function SearchPage() {
                 {/* Render ComparisonPage if both aircraft are selected */}
                 {filteredData1 && filteredData2 && (
                     <>
-                        <ExteriorAircraftPage plane={filteredData1} />
-                        <ExteriorAircraftPage plane={filteredData2} />
-                        <InteriorAircraftPage plane={filteredData1} />
-                        <InteriorAircraftPage plane={filteredData2} />
+                        <div className="print-block exterior">
+                            <ExteriorAircraftPage plane={filteredData1} />
+                            <ExteriorAircraftPage plane={filteredData2} />
+                        </div>
+                        <div className="print-block interior">
+                            <InteriorAircraftPage plane={filteredData1} />
+                            <InteriorAircraftPage plane={filteredData2} />
+                        </div>
                     </>
                 )}
             </Box>
