@@ -2,9 +2,10 @@ import React from "react";
 import useAircraftComparison from "./hooks/useAircraftComparison.js";
 import Grid from "@mui/joy/Grid";
 import {Box, Sheet, styled, Typography} from "@mui/joy";
-import BeechJet from "./assets/beechjet_400a.jpg";
-import Challenger604 from "./assets/Challenger 604 9 pax - INT.png";
-import Challenger650 from "./assets/NetJets Challenger 650 - Int (Standard Lav).png";
+import CL350 from "./assets/CL350_EXT.png";
+import CL604 from "./assets/CL604 - EXT.png";
+import CL650 from "./assets/CL650 - EXT.png";
+import Citattion from "./assets/Citation Latitude - EXT.png";
 import './ComparisonPage.css'; // Ensure to import your CSS
 
 const Item = styled(Sheet)(({ theme }) => ({
@@ -20,31 +21,22 @@ const Item = styled(Sheet)(({ theme }) => ({
 }));
 
 function ExteriorAircraftPage({plane}) {
-    const metadata = {
-        size: "15.6 m",
-        baggageVolume: "56 cu ft",
-        cabinHeight: "4.8 ft",
-        cabinWidth: "4.9 ft",
-        interiorSeatingLength: "13.6 ft",
-    };
-
+    const images = {1: CL604, 2:Citattion, 3: CL350, 4:CL650}
+    const width = {1: "90%", 2:"70%", 3: "80%", 4:"100%"}
     const metadata2 = {
         name: "BeechJet 400A",
         longRange: { 2: "1,312 sm", 4: "1,242 sm", 7: "934 sm" },
         highSpeed: { 2: "1,128 sm", 4: "1,079 sm", 7: "821 sm" },
     };
-
-    const images = {"Challenger 350": BeechJet, "Challenger 650":BeechJet }
-
     return (
         <div>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={6} md={6}>
                     <Item>
                         <img
-                            src={images[plane.FleetType]}
+                            src={images[plane.FleetId]}
                             style={{
-                                maxWidth: plane.FleetType === "Challenger 650" ? '100%' : '80%',
+                                maxWidth: width[plane.FleetId],
                                 display: 'block'
                             }}
                             alt="BeechJet"
