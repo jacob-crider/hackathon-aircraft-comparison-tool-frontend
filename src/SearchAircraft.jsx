@@ -40,135 +40,118 @@ function SearchPage() {
         setFilteredData3(filtered.length > 0 ? filtered[0] : null);
     };
 
-    return (
-        <>
-            <Box sx={{p: 2}} style={{display: "flex", width: "100%"}}>
-                <Row>
-                    <Grid container spacing={2}>
-                        {/* First Dropdown */}
+  return (
+      <>
+        <Box sx={{ p: 2 }} style={{ display: "flex", width: "100%" }}>
+          <Row>
+            <Grid container spacing={2}>
+              {/* First Dropdown */}
+              <Grid item xs={12} class="col-md-3" style={{ marginRight: "5px" }}>
+                <FormControl style={{ minWidth: 400 }}>
+                  <InputLabel id="dropdown1-label">Select First Aircraft</InputLabel>
+                  <Select
+                      labelId="dropdown1-label"
+                      id="dropdown1"
+                      value={selectedPlane1}
+                      onChange={handleDropdownChange1}
+                      placeholder="Select an Aircraft"
+                  >
+                    <MenuItem value="">
+                      <em>Select an Aircraft</em>
+                    </MenuItem>
+                    {data &&
+                        data.map((plane, index) => (
+                            <MenuItem key={index} value={plane.FleetType}>
+                              {plane.FleetType}
+                            </MenuItem>
+                        ))}
+                  </Select>
+                </FormControl>
+              </Grid>
 
-                        <Grid item xs={12} class="col-md-3" style={{marginRight: "5px"}}>
-                            <FormControl style={{minWidth: 400}}>
-                                <InputLabel id="dropdown1-label">
-                                    Select First Aircraft
-                                </InputLabel>
-                                <Select
-                                    labelId="dropdown1-label"
-                                    id="dropdown1"
-                                    value={selectedPlane1}
-                                    onChange={handleDropdownChange1}
-                                    placeholder="Select an Aircraft"
-                                >
-                                    <MenuItem value="">
-                                        <em>Select an Aircraft</em>
-                                    </MenuItem>
-                                    {data &&
-                                        data.map((plane, index) => (
-                                            <MenuItem key={index} value={plane.FleetType}>
-                                                {plane.FleetType}
-                                            </MenuItem>
-                                        ))}
-                                </Select>
-                            </FormControl>
-                        </Grid>
+              {/* Second Dropdown */}
+              <Grid item xs={12} class="col-md-3" style={{ marginRight: "5px" }}>
+                <FormControl style={{ minWidth: 400 }}>
+                  <InputLabel id="dropdown1-label">Select Second Aircraft</InputLabel>
+                  <Select
+                      labelId="dropdown1-label"
+                      id="dropdown1"
+                      value={selectedPlane2}
+                      onChange={handleDropdownChange2}
+                      placeholder="Select an Aircraft"
+                  >
+                    <MenuItem value="">
+                      <em>Select an Aircraft</em>
+                    </MenuItem>
+                    {data &&
+                        data.map((plane, index) => (
+                            <MenuItem key={index} value={plane.FleetType}>
+                              {plane.FleetType}
+                            </MenuItem>
+                        ))}
+                  </Select>
+                </FormControl>
+              </Grid>
 
-                        {/* Second Dropdown */}
-                        <Grid item xs={12} class="col-md-3" style={{marginRight: "5px"}}>
-                            <FormControl style={{minWidth: 400}}>
-                                <InputLabel id="dropdown1-label">
-                                    Select Second Aircraft
-                                </InputLabel>
-                                <Select
-                                    labelId="dropdown1-label"
-                                    id="dropdown1"
-                                    value={selectedPlane2}
-                                    onChange={handleDropdownChange2}
-                                    placeholder="Select an Aircraft"
-                                >
-                                    <MenuItem value="">
-                                        <em>Select an Aircraft</em>
-                                    </MenuItem>
-                                    {data &&
-                                        data.map((plane, index) => (
-                                            <MenuItem key={index} value={plane.FleetType}>
-                                                {plane.FleetType}
-                                            </MenuItem>
-                                        ))}
-                                </Select>
-                            </FormControl>
-                        </Grid>
+              {/* Third Dropdown */}
+              <Grid item xs={12} class="col-md-3">
+                <FormControl style={{ minWidth: 400 }}>
+                  <InputLabel id="dropdown2-label">Select Third Aircraft</InputLabel>
+                  <Select
+                      labelId="dropdown3-label"
+                      id="dropdown3"
+                      value={selectedPlane3}
+                      onChange={handleDropdownChange3}
+                      placeholder="Select an Aircraft"
+                  >
+                    <MenuItem value="">
+                      <em>Select an Aircraft</em>
+                    </MenuItem>
+                    {data &&
+                        data.map((plane, index) => (
+                            <MenuItem key={index} value={plane.FleetType}>
+                              {plane.FleetType}
+                            </MenuItem>
+                        ))}
+                  </Select>
+                </FormControl>
+              </Grid>
+            </Grid>
+          </Row>
+        </Box>
 
-                        {/* Third Dropdown */}
-                        <Grid item xs={12} class="col-md-3">
-                            <FormControl style={{minWidth: 400}}>
-                                <InputLabel id="dropdown2-label">
-                                    Select Third Aircraft
-                                </InputLabel>
-                                <Select
-                                    labelId="dropdown3-label"
-                                    id="dropdown3"
-                                    value={selectedPlane3}
-                                    onChange={handleDropdownChange3}
-                                    placeholder="Select an Aircraft"
-                                >
-                                    <MenuItem value="">
-                                        <em>Select an Aircraft</em>
-                                    </MenuItem>
-                                    {data &&
-                                        data.map((plane, index) => (
-                                            <MenuItem key={index} value={plane.FleetType}>
-                                                {plane.FleetType}
-                                            </MenuItem>
-                                        ))}
-                                </Select>
-                            </FormControl>
-                        </Grid>
-                    </Grid>
-                </Row>
-            </Box>
-            {/* Render ComparisonPage if at least one aircraft is selected */}
-            {(filteredData1 || filteredData2 || filteredData3) && (
-                <>
-                    <Row className="tr">
-                        <header className="header">Exterior</header>
-                    </Row>
-                    {filteredData1 && (
-                        <>
-                            <ExteriorAircraftPage plane={filteredData1}/>
-                        </>
-                    )}
-                    {filteredData2 && (
-                        <>
-                            <ExteriorAircraftPage plane={filteredData2}/>
-                        </>
-                    )}
-                    {filteredData3 && (
-                        <>
-                            <ExteriorAircraftPage plane={filteredData3}/>
-                        </>
-                    )}
-                    <Row className="tr">
-                        <header className="header">Interior</header>
-                    </Row>
-                    {filteredData1 && (
-                        <>
-                            <InteriorAircraftPage plane={filteredData1}/>
-                        </>
-                    )}
-                    {filteredData2 && (
-                        <>
-                            <InteriorAircraftPage plane={filteredData2}/>
-                        </>
-                    )}
-                    {filteredData3 && (
-                        <>
-                            <InteriorAircraftPage plane={filteredData3}/>
-                        </>
-                    )}
-                </>
-            )}
-        </>
-    );
+        {/* Render ComparisonPage if any aircraft are selected */}
+        {(filteredData1 || filteredData2 || filteredData3) && (() => {
+          const selectedPlanes = [filteredData1, filteredData2, filteredData3].filter(Boolean);
+
+          const sortedPlanes = [...selectedPlanes].sort((a, b) => b.OverallCabinLength - a.OverallCabinLength);
+
+          const maxCabinLength = sortedPlanes[0].OverallCabinLength;
+
+            let widths = {};
+            selectedPlanes.forEach(selectedPlane => {
+                widths[selectedPlane.FleetId] = selectedPlane.OverallCabinLength/maxCabinLength * 100 + '%';
+            });
+
+          return (
+              <>
+                {/* Display all exterior pages first */}
+                {selectedPlanes.map((plane) => (
+                    <div key={plane.FleetId} style={{ marginBottom: "20px" }}>
+                      <ExteriorAircraftPage plane={plane} widthProp={widths[plane.FleetId]} />
+                    </div>
+                ))}
+                {/* Display all interior pages after exterior */}
+                {selectedPlanes.map((plane) => (
+                    <div key={plane.FleetId} style={{ marginBottom: "20px" }}>
+                      <InteriorAircraftPage plane={plane} widthProp={widths[plane.FleetId]} />
+                    </div>
+                ))}
+              </>
+          );
+        })()}
+      </>
+  );
 }
 
 export default SearchPage;

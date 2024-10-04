@@ -20,7 +20,7 @@ const Item = styled(Sheet)(({ theme }) => ({
     }),
 }));
 
-function InteriorAircraftPage({plane}) {
+function InteriorAircraftPage({plane,widthProp}) {
 
     const images = {1: CL604, 2:Citattion, 3: CL350, 4:CL650}
     const width = {1: "90%", 2:"70%", 3: "80%", 4:"100%"}
@@ -33,7 +33,7 @@ function InteriorAircraftPage({plane}) {
                         <img
                             src={images[plane.FleetId]}
                             style={{
-                                maxWidth: width[plane.FleetId],
+                                maxWidth: widthProp,
                                 display: 'block'
                             }}
                             alt="BeechJet"
@@ -83,6 +83,29 @@ function InteriorAircraftPage({plane}) {
                                 <Grid item xs={6}>
                                     <Typography variant="body1">
                                         {plane.CabinWidth} feet
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <Typography variant="subtitle1" fontWeight="medium" color="text.secondary">
+                                        Interior Seating Length:
+                                    </Typography>
+                                </Grid>
+
+                                <Grid item xs={6}>
+                                    <Typography variant="body1">
+                                        {plane.InteriorSeatingLength} feet
+                                    </Typography>
+                                </Grid>
+                                {/* Cabin Height */}
+                                <Grid item xs={6}>
+                                    <Typography variant="subtitle1" fontWeight="medium" color="text.secondary">
+                                        Overall Cabin Length:
+                                    </Typography>
+                                </Grid>
+
+                                <Grid item xs={6}>
+                                    <Typography variant="body1">
+                                        {plane.OverallCabinLength} feet
                                     </Typography>
                                 </Grid>
                             </Grid>
