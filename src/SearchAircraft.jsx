@@ -12,8 +12,10 @@ function SearchPage() {
     const { data } = useAircraftComparison();
     const [selectedPlane1, setSelectedPlane1] = useState("");
     const [selectedPlane2, setSelectedPlane2] = useState("");
+    const [selectedPlane3, setSelectedPlane3] = useState("");
     const [filteredData1, setFilteredData1] = useState(null);
     const [filteredData2, setFilteredData2] = useState(null);
+    const [filteredData3, setFilteredData3] = useState(null);
 
     const handleDropdownChange1 = (event) => {
         const selectedPlane = event.target.value;
@@ -28,6 +30,14 @@ function SearchPage() {
         setSelectedPlane2(selectedPlane);
         const filtered = data.filter((plane) => plane.FleetType === selectedPlane);
         setFilteredData2(filtered.length > 0 ? filtered[0] : null);
+    };
+
+    const handleDropdownChange3 = (event) => {
+        const selectedPlane = event.target.value;
+        console.log(`Selected plane ${selectedPlane}`);
+        setSelectedPlane3(selectedPlane);
+        const filtered = data.filter((plane) => plane.FleetType === selectedPlane);
+        setFilteredData3(filtered.length > 0 ? filtered[0] : null);
     };
 
     return (
@@ -79,15 +89,63 @@ function SearchPage() {
                             </Select>
                         </FormControl>
                     </Grid>
-                </Grid>
 
-                {/* Render ComparisonPage if both aircraft are selected */}
-                {filteredData1 && filteredData2 && (
+                    {/* Third Dropdown */}
+                    <Grid item xs={12} md={6}>
+                        <FormControl fullWidth>
+                            <InputLabel id="dropdown3-label">Select Third Aircraft</InputLabel>
+                            <Select
+                                labelId="dropdown3-label"
+                                id="dropdown3"
+                                value={selectedPlane3}
+                                onChange={handleDropdownChange3}
+                                placeholder="Select an Aircraft"
+                            >
+                                <MenuItem value="">
+                                    <em>Select an Aircraft</em>
+                                </MenuItem>
+                                {data && data.map((plane, index) => (
+                                    <MenuItem key={index} value={plane.FleetType}>
+                                        {plane.FleetType}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </FormControl>
+                    </Grid>
+                </Grid>
+                {/* Render ComparisonPage if at least one aircraft is selected */}
+                {(filteredData1 || filteredData2 || filteredData3) && (
                     <>
-                        <ExteriorAircraftPage plane={filteredData1} />
-                        <ExteriorAircraftPage plane={filteredData2} />
-                        <InteriorAircraftPage plane={filteredData1} />
-                        <InteriorAircraftPage plane={filteredData2} />
+                        {filteredData1 && (
+                            <>
+                                <ExteriorAircraftPage plane={filteredData1} />
+                            </>
+                        )}
+                        {filteredData2 && (
+                            <>
+                                <ExteriorAircraftPage plane={filteredData2} />
+                            </>
+                        )}
+                        {filteredData3 && (
+                            <>
+                                <ExteriorAircraftPage plane={filteredData3} />
+                            </>
+                        )}
+                        {filteredData1 && (
+                            <>
+                                <InteriorAircraftPage plane={filteredData1} />
+                            </>
+                        )}
+                        {filteredData2 && (
+                            <>
+                                <InteriorAircraftPage plane={filteredData2} />
+                            </>
+                        )}
+                        {filteredData3 && (
+                            <>
+                                <InteriorAircraftPage plane={filteredData3} />
+                            </>
+                        )}
                     </>
                 )}
             </Box>
