@@ -1,4 +1,5 @@
 import "./App.css";
+import InteriorAircraftPage from "./InteriorAircraftPage.jsx";
 import logo from "./images/NetJetslogo_2022_smaller.png";
 import SearchPage from "./SearchAircraft.jsx";
 

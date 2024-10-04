@@ -19,9 +19,7 @@ const Item = styled(Sheet)(({ theme }) => ({
     }),
 }));
 
-function ComparisonPage({plane}) {
-    const { data } = useAircraftComparison();
-
+function ExteriorAircraftPage({plane}) {
     const metadata = {
         size: "15.6 m",
         baggageVolume: "56 cu ft",
@@ -36,7 +34,7 @@ function ComparisonPage({plane}) {
         highSpeed: { 2: "1,128 sm", 4: "1,079 sm", 7: "821 sm" },
     };
 
-    const images = {"Challenger 350": Challenger604, "Challenger 650":Challenger650 }
+    const images = {"Challenger 350": BeechJet, "Challenger 650":BeechJet }
 
     return (
         <div>
@@ -55,9 +53,11 @@ function ComparisonPage({plane}) {
                 </Grid>
                 <Grid item xs={12} sm={6} md={6}>
                     <Item>
-                        <Typography variant="h5" fontWeight="bold" gutterBottom>
-                            {plane.FleetType}
-                        </Typography>
+                        <Grid item xs={12}> {/* Takes full width and centers the content */}
+                            <Typography variant="h5" fontWeight="bold" textAlign="center" gutterBottom>
+                                {plane.FleetType}
+                            </Typography>
+                        </Grid>
 
                         <Box sx={{ textAlign: "left", marginTop: 2 }}>
                             <table style={{ width: "100%", borderCollapse: "collapse" }}>
@@ -104,4 +104,4 @@ function ComparisonPage({plane}) {
     );
 }
 
-export default ComparisonPage;
+export default ExteriorAircraftPage;
