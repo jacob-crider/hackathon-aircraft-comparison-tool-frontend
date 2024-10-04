@@ -15,6 +15,7 @@ const useAircraftComparison = () => {
         );
         console.log(response.data)
         setData(response.data);
+        console.log(response.data);
         setError(null);
       } catch (err) {
         setError("Failed to fetch plane");

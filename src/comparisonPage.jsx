@@ -63,3 +63,4 @@ function ComparisonPage(data) {
 }
 
 export default ComparisonPage;
+
