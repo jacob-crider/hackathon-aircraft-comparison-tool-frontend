@@ -129,7 +129,7 @@ function SearchPage() {
             {/* Render ComparisonPage if at least one aircraft is selected */}
             {(filteredData1 || filteredData2 || filteredData3) && (
                 <>
-                    <Row>
+                    <Row className="tr">
                         <header className="header">Exterior</header>
                     </Row>
                     {filteredData1 && (
@@ -147,7 +147,7 @@ function SearchPage() {
                             <ExteriorAircraftPage plane={filteredData3}/>
                         </>
                     )}
-                    <Row>
+                    <Row className="tr">
                         <header className="header">Interior</header>
                     </Row>
                     {filteredData1 && (
