@@ -14,6 +14,7 @@ const useAircraftComparison = () => {
           "https://zvim5i62kh.execute-api.us-east-2.amazonaws.com/dev/getAircraft"
         );
         setData(response.data);
+        console.log(response.data);
         setError(null);
       } catch (err) {
         setError("Failed to fetch plane");

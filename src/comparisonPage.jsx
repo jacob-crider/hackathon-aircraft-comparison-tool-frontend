@@ -1,8 +1,10 @@
 import React from "react";
 import useAircraftComparison from "./hooks/useAircraftComparison.js";
 import Grid from "@mui/joy/Grid";
-import { Sheet, styled } from "@mui/joy";
+import {Box, Sheet, styled, Typography} from "@mui/joy";
 import BeechJet from "./assets/beechjet_400a.jpg";
+import Challenger604 from "./assets/Challenger 604 9 pax - INT.png";
+import Challenger650 from "./assets/NetJets Challenger 650 - Int (Standard Lav).png";
 import './ComparisonPage.css'; // Ensure to import your CSS
 
 const Item = styled(Sheet)(({ theme }) => ({
@@ -17,7 +19,7 @@ const Item = styled(Sheet)(({ theme }) => ({
     }),
 }));
 
-function ComparisonPage() {
+function ComparisonPage({plane}) {
     const { data } = useAircraftComparison();
 
     const metadata = {
@@ -28,32 +30,23 @@ function ComparisonPage() {
         interiorSeatingLength: "13.6 ft",
     };
 
+    const metadata2 = {
+        name: "BeechJet 400A",
+        longRange: { 2: "1,312 sm", 4: "1,242 sm", 7: "934 sm" },
+        highSpeed: { 2: "1,128 sm", 4: "1,079 sm", 7: "821 sm" },
+    };
+
+    const images = {"Challenger 350": Challenger604, "Challenger 650":Challenger650 }
+
     return (
         <div>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={6} md={6}>
                     <Item>
-                        <img src={BeechJet} style={{ maxWidth: '100%' }} alt="BeechJet" />
-                    </Item>
-                </Grid>
-                <Grid item xs={12} sm={6} md={6}>
-                    <Item>
-                        <h3>Flight Metadata</h3>
-                        <p><strong>Size:</strong> {metadata.size}</p>
-                        <p><strong>Baggage Volume:</strong> {metadata.baggageVolume}</p>
-                        <p><strong>Cabin Height:</strong> {metadata.cabinHeight}</p>
-                        <p><strong>Cabin Width:</strong> {metadata.cabinWidth}</p>
-                        <p><strong>Interior Seating Length:</strong> {metadata.interiorSeatingLength}</p>
-                    </Item>
-                </Grid>
-            </Grid>
-            <Grid container spacing={2}>
-                <Grid item xs={12} sm={6} md={6}>
-                    <Item>
                         <img
-                            src={BeechJet}
+                            src={images[plane.FleetType]}
                             style={{
-                                maxWidth: '80%',
+                                maxWidth: plane.FleetType === "Challenger 650" ? '100%' : '80%',
                                 display: 'block'
                             }}
                             alt="BeechJet"
@@ -62,12 +55,48 @@ function ComparisonPage() {
                 </Grid>
                 <Grid item xs={12} sm={6} md={6}>
                     <Item>
-                        <h3>Flight Metadata</h3>
-                        <p><strong>Size:</strong> {metadata.size}</p>
-                        <p><strong>Baggage Volume:</strong> {metadata.baggageVolume}</p>
-                        <p><strong>Cabin Height:</strong> {metadata.cabinHeight}</p>
-                        <p><strong>Cabin Width:</strong> {metadata.cabinWidth}</p>
-                        <p><strong>Interior Seating Length:</strong> {metadata.interiorSeatingLength}</p>
+                        <Typography variant="h5" fontWeight="bold" gutterBottom>
+                            {plane.FleetType}
+                        </Typography>
+
+                        <Box sx={{ textAlign: "left", marginTop: 2 }}>
+                            <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th style={{ textAlign: "center" }}>2 Passengers</th>
+                                    <th style={{ textAlign: "center" }}>4 Passengers</th>
+                                    <th style={{ textAlign: "center" }}>7 Passengers</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><strong>Long Range</strong></td>
+                                    <td style={{ textAlign: "center" }}>
+                                        {plane.Min}
+                                    </td>
+                                    <td style={{ textAlign: "center" }}>
+                                        {plane.Med}
+                                    </td>
+                                    <td style={{ textAlign: "center" }}>
+                                        {plane.Max}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>High Speed</strong></td>
+                                    <td style={{ textAlign: "center" }}>
+                                        {metadata2.highSpeed[2]}
+                                    </td>
+                                    <td style={{ textAlign: "center" }}>
+                                        {metadata2.highSpeed[4]}
+                                    </td>
+                                    <td style={{ textAlign: "center" }}>
+                                        {metadata2.highSpeed[7]}
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </Box>
                     </Item>
                 </Grid>
             </Grid>
