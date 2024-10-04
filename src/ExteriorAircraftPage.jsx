@@ -20,7 +20,7 @@ const Item = styled(Sheet)(({ theme }) => ({
     }),
 }));
 
-function ExteriorAircraftPage({plane}) {
+function ExteriorAircraftPage({plane, widthProp}) {
     const images = {1: CL604, 2:Citattion, 3: CL350, 4:CL650}
     const width = {1: "90%", 2:"70%", 3: "80%", 4:"100%"}
     const metadata2 = {
@@ -36,7 +36,7 @@ function ExteriorAircraftPage({plane}) {
                         <img
                             src={images[plane.FleetId]}
                             style={{
-                                maxWidth: width[plane.FleetId],
+                                maxWidth: widthProp,
                                 display: 'block'
                             }}
                             alt="BeechJet"
