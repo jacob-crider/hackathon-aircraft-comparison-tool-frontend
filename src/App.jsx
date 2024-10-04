@@ -10,7 +10,8 @@ function App() {
       <Row>
         <header
           style={{
-            background: "#11275D",
+            color: "white",
+            // background: "#11275D",
             display: "flex",
             justifyContent: "space-between", // Keeps logo on the left and h1 on the right
             alignItems: "center", // Vertically centers content
